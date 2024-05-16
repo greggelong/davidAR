@@ -63,6 +63,8 @@ function setup() {
 
  function draw(){
   image(capture, 0, 0,width,height); 
+  push()
+  scale(0.5)
   image(tp,cx+100,cy+0)
   image(sd,cx+0,cy+100)
   let column = rcolumn;//floor(random(8))
@@ -88,7 +90,7 @@ function setup() {
   fill(0)
   textSize(25)
   text(hexagram.join(''),cx+640,cy+750)
-
+ pop()
 
 }
 
