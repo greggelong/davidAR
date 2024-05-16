@@ -15,6 +15,8 @@ let lasttouch= 0;
 let trigrams =[]
 let triGramOrder = [7,3,5,1,6,2,4,0]
 let cx, xy
+
+let scl = 1
 function preload(){
   gd =loadImage("blends.png")
   tp = loadImage("top.png")
@@ -62,9 +64,20 @@ function setup() {
  
 
  function draw(){
+  background(255)
+  cx = windowWidth/2-400 // 
+  cy = windowHeight/2-400// to center the 800 size image
   image(capture, 0, 0,width,height); 
+  scx = width/
   push()
-  scale(0.5)
+  //scl = 0,5
+  scl = noise(t);
+  scl = map(scl,0,1,0.5,1);
+  scale(scl)
+  cx=cx/(scl/2)
+  cy=cy/(scl/2)
+  t=t+0.01
+
   image(tp,cx+100,cy+0)
   image(sd,cx+0,cy+100)
   let column = rcolumn;//floor(random(8))
