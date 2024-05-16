@@ -64,9 +64,8 @@ function setup() {
  
 
  function draw(){
-  background(255)
-  cx = windowWidth/2-400 // 
-  cy = windowHeight/2-400// to center the 800 size image
+  //background(255)
+   
   image(capture, 0, 0,width,height); 
   scx = width/
   push()
@@ -74,8 +73,8 @@ function setup() {
   scl = noise(t);
   scl = map(scl,0,1,0.5,1);
   scale(scl)
-  cx=cx/(scl/2)
-  cy=cy/(scl/2)
+  cx=windowWidth/2-(400*scl)// 
+  cy=windowHeight/2-(400*scl) // 
   t=t+0.01
 
   image(tp,cx+100,cy+0)
