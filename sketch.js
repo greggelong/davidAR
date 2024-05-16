@@ -14,6 +14,7 @@ let rrow =0
 let lasttouch= 0;
 let trigrams =[]
 let triGramOrder = [7,3,5,1,6,2,4,0]
+let cx, xy
 function preload(){
   gd =loadImage("blends.png")
   tp = loadImage("top.png")
@@ -21,6 +22,8 @@ function preload(){
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  cx = windowWidth/2-400 // 
+  cy = windowHeight/2-400// to center the 800 size image
   pixelDensity(1); 
   var constraints = {
     audio: false,
@@ -60,8 +63,8 @@ function setup() {
 
  function draw(){
   image(capture, 0, 0,width,height); 
-  image(tp,100,0)
-  image(sd,0,100)
+  image(tp,cx+100,cy+0)
+  image(sd,cx+0,cy+100)
   let column = rcolumn;//floor(random(8))
   let row = rrow;// floor(random(8))
   // rect around the top
@@ -70,21 +73,21 @@ function setup() {
   noFill()
   stroke(255,0,0)
   strokeWeight(5)
-  rect(100+(rcolumn*85),20,80,80)
+  rect(cx+100+(rcolumn*85),cy+20,80,80)
   
   // rect around the bottom
-  rect(10,100+(rrow*87),80,84)
+  rect(cx+10,cy+100+(rrow*87),80,84)
   
 
   // the big picture
   let bigpic = gd.get(rcolumn*100,rrow*100,100,100)
-  image(bigpic,200,200,500,500)
+  image(bigpic,cx+200,cy+200,500,500)
 
   // hexagram shadow
   showGram(hexagram)
   fill(0)
   textSize(25)
-  text(hexagram.join(''),640,750)
+  text(hexagram.join(''),cx+640,cy+750)
 
 
 }
@@ -127,10 +130,10 @@ function showGram(narray){
   let y = 170;
   for (let i =0; i<narray.length; i++){
     if (narray[i]===0){
-      rect(175,y,210,50);
-      rect(515,y,210,50);
+      rect(cx+175,cy+y,210,50);
+      rect(cx+515,cy+y,210,50);
     }else{
-      rect(175,y,550,50)
+      rect(cx+175,cy+y,550,50)
     }
     y+=100
   }
